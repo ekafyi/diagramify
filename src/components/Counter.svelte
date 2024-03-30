@@ -1,4 +1,6 @@
 <script lang="ts">
+	export let text = "Hello World!";
+
 	let count = 0;
 
 	function add() {
@@ -16,7 +18,7 @@
 	<button on:click={add}>+</button>
 </div>
 <div class="message">
-	<slot />
+	<h1>{text}</h1>
 </div>
 
 <style>
