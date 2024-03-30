@@ -1,9 +1,6 @@
 ---
-// Component Imports
-import Counter from '../components/Counter.svelte';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+// import Counter from "@/components/Counter.svelte";
+import Prompter from "@/components/Prompter.svelte";
 ---
 
 <html lang="en">
@@ -25,7 +22,8 @@ import Counter from '../components/Counter.svelte';
 	</head>
 	<body>
 		<main>
-			<Counter client:visible text="Hello, Svelte!" />
+      <!-- <Counter client:visible text="Hello, Svelte!" /> -->
+      <Prompter client:load />
 		</main>
 	</body>
 </html>
