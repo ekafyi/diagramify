@@ -20,8 +20,10 @@
       });
       if (apiRes.ok) {
         const data = await apiRes.json();
-        if (data.response) {
+        if (data.response && !data.promptFeedback) {
           uiState.response = data.response;
+        } else if (data.promptFeedback) {
+          uiState.error = `${data.response} — ${JSON.stringify(data.promptFeedback)}`;
         } else {
           uiState.error = `Unknown error: Missing response`;
         }
