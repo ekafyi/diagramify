@@ -40,10 +40,22 @@
   $: content && hasMounted && renderDiagram();
 </script>
 
-<div bind:this={containerEl}></div>
+<div bind:this={containerEl} class="flex justify-center"></div>
 
 {#if error}
   <Error title={error} msg="Error rendering diagram. Reload and try again." />
 {:else}
-  <pre><code>{content}</code></pre>
+  <div class="mockup-code text-xs md:text-sm">
+    <pre><code>{content}</code></pre>
+  </div>
 {/if}
+
+<style>
+  .mockup-code pre:before {
+    content: none;
+  }
+  .mockup-code pre {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+</style>
