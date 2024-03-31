@@ -1,6 +1,6 @@
 ---
 // import Counter from "@/components/Counter.svelte";
-// import Prompter from "@/components/Prompter.svelte";
+import Prompter from "@/components/Prompter.svelte";
 import App from "@/components/App.svelte";
 ---
 
@@ -10,21 +10,11 @@ import App from "@/components/App.svelte";
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<style>
-			html,
-			body {
-				font-family: system-ui;
-				margin: 0;
-			}
-			body {
-				padding: 2rem;
-			}
-		</style>
 	</head>
 	<body>
 		<main>
       <!-- <Counter client:visible text="Hello, Svelte!" /> -->
-      <App client:load />
+      <Prompter client:load />
 		</main>
 	</body>
 </html>

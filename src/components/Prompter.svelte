@@ -42,33 +42,30 @@
 <p id="desc-text">Ask Gemini</p>
 <form aria-labelledby="desc-text" on:submit|preventDefault={handleSubmit}>
   <div>
-    <label for="prompt-input">Write your prompt</label>
+    <label for="prompt-input" class="flex flex-col"> Write your prompt </label>
     <input
       id="prompt-input"
       bind:value={prompt}
       disabled={uiState.isLoading}
       aria-invalid={!!uiState.error}
       aria-describedby={uiState.error ? "prompter-error" : undefined}
+      class="border border-gray-500 rounded"
     />
   </div>
-  <button type="submit" disabled={uiState.isLoading}>Submit</button>
+  <button
+    type="submit"
+    disabled={uiState.isLoading}
+    class="bg-gray-200 font-semibold py-2 px-4"
+  >
+    Submit
+  </button>
 </form>
 <hr />
 {#if uiState.response}
   <p aria-live="polite">{uiState.response}</p>
 {/if}
 {#if uiState.error}
-  <p id="prompter-error" aria-live="polite">
+  <p id="prompter-error" aria-live="polite" class="text-red-700">
     {uiState.error}
   </p>
 {/if}
-
-<style>
-  label {
-    display: flex;
-    flex-direction: column;
-  }
-  #prompter-error {
-    color: red;
-  }
-</style>
