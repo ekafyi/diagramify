@@ -34,3 +34,12 @@
 </script>
 
 <div bind:this={containerEl}></div>
+
+<pre><code>{content}</code></pre>
+
+<style>
+  pre {
+    background: #f2f2f2;
+    padding: 0.5rem;
+  }
+</style>
