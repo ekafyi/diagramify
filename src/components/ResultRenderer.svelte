@@ -1,5 +1,6 @@
 <script lang="ts">
   import Mermaid from "./Mermaid.svelte";
+  import Markdown from "svelte-exmarkdown";
   import { getMermaidAndLinks } from "@/utils/str";
 
   let mermaidStr = "";
@@ -35,4 +36,10 @@ end
 
 {#if mermaidStr}
   <Mermaid content={mermaidStr} />
+{/if}
+{#if markdownStr}
+  <section aria-labelledby="links-heading">
+    <p id="links-heading">Learn more</p>
+    <Markdown md={markdownStr} />
+  </section>
 {/if}
