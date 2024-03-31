@@ -52,11 +52,7 @@
       class="border border-gray-500 rounded"
     />
   </div>
-  <button
-    type="submit"
-    disabled={uiState.isLoading}
-    class="bg-gray-200 font-semibold py-2 px-4"
-  >
+  <button type="submit" disabled={uiState.isLoading} class="btn btn-primary">
     Submit
   </button>
 </form>

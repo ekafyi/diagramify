@@ -34,6 +34,7 @@
     "@types/jest": "29.5.12",
     "@vitest/coverage-v8": "^1.4.0",
     "@vitest/ui": "^1.4.0",
+    "daisyui": "^4.9.0",
     "happy-dom": "^14.3.9",
     "vitest": "^1.4.0"
   }
