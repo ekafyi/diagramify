@@ -1,5 +1,6 @@
 <script lang="ts">
   import OptionsSelect from "./OptionsSelect.svelte";
+  import ResultRenderer from "./ResultRenderer.svelte";
 
   let uiState = {
     response: "",
@@ -48,3 +49,13 @@
 </script>
 
 <OptionsSelect on:submit={handleSubmit} />
+
+{#if uiState.isLoading}
+  <div>loading...</div>
+{:else if uiState.error}
+  <p id="prompter-error" aria-live="polite">
+    {uiState.error}
+  </p>
+{:else if uiState.response}
+  <ResultRenderer response={uiState.response} />
+{/if}
