@@ -14,9 +14,11 @@
     try {
       const { svg } = await mermaid.render("svelte-mermaid", content);
       containerEl.innerHTML = svg;
+      window.umami?.track("result-mermaid-load");
     } catch (err) {
       error = err.name;
       console.warn(`${err.name} — ${err.message}`);
+      window.umami?.track("result-mermaid-error");
     }
   };
 
