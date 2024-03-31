@@ -1,20 +1,8 @@
 ---
-// import Counter from "@/components/Counter.svelte";
-// import Prompter from "@/components/Prompter.svelte";
+import Layout from "@/layouts/Layout.astro";
 import App from "@/components/App.svelte";
 ---
 
-<html lang="en" data-theme="dark">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-	</head>
-	<body>
-		<main>
-      <!-- <Counter client:visible text="Hello, Svelte!" /> -->
-      <App client:load />
-		</main>
-	</body>
-</html>
+<Layout>
+  <App client:load />
+</Layout>
