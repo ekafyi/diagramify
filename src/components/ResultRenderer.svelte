@@ -36,7 +36,11 @@
 
 {#if markdownStr}
   <div class="collapse collapse-arrow bg-base-200">
-    <input type="radio" name="my-accordion-2" />
+    <input
+      type="radio"
+      name="my-accordion-2"
+      data-umami-event="result-links-expand"
+    />
     <div class="collapse-title text-xl font-medium">Learn more</div>
     <div
       class="collapse-content prose prose-sm md:prose-base prose-a:text-primary hover:prose-a:no-underline"
@@ -48,7 +52,11 @@
 
 {#if mermaidStr}
   <div class="collapse collapse-arrow bg-base-200">
-    <input type="radio" name="my-accordion-2" />
+    <input
+      type="radio"
+      name="my-accordion-2"
+      data-umami-event="result-code-expand"
+    />
     <div class="collapse-title text-xl font-medium">Code</div>
     <div class="collapse-content overflow-x-auto">
       <div class="mockup-code text-xs md:text-sm">

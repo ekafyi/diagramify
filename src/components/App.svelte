@@ -39,9 +39,13 @@
       } else {
         const errorText = (await apiRes.text()) || apiRes.statusText;
         uiState.error = `Error ${apiRes.status}: ${errorText}`;
+        window.umami?.track("fetch-error", {
+          message: `${apiRes.status}: ${errorText}`,
+        });
       }
     } catch (err) {
       uiState.error = `Unknown error: ${JSON.stringify(err)}`;
+      window.umami?.track("fetch-error", { message: JSON.stringify(err) });
     } finally {
       uiState.isLoading = false;
     }

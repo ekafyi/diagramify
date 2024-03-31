@@ -78,6 +78,8 @@
     <button
       on:click={handleClick}
       data-name={concept.name}
+      data-umami-event="option-button"
+      data-umami-event-name={concept.name}
       type="button"
       class="btn rounded-full"
       class:btn-outline={selectedConcept?.name !== concept.name}
@@ -92,6 +94,7 @@
   <button
     on:click={handleSubmit}
     disabled={!selectedConcept}
+    data-umami-event="submit-button"
     class="btn btn-primary btn-lg px-10"
   >
     Get diagram
