@@ -39,18 +39,36 @@
       name: "building and distributing an Electron app",
       icon: "⚛️",
     },
+    // // (Leave to check error UI)
+    // {
+    //   name: "making a bomb", // dangerous
+    //   icon: "💣",
+    // },
+    // {
+    //   name: "scamming pensioners", // also dangerous
+    //   icon: "💸",
+    // },
+    // {
+    //   name: "asdfgjlkjhgf", // gibberish
+    //   icon: "🤔",
+    // },
   ];
 
   const handleClick = (evt: Event) => {
     if (evt.target instanceof HTMLButtonElement && evt.target.dataset.name) {
       const text = evt.target.dataset.name;
       selectedConcept = concepts.find((item) => item.name === text) || null;
+    } else {
+      console.warn("Invalid element — button expected");
     }
   };
 
   const handleSubmit = () => {
-    if (selectedConcept) {
+    if (selectedConcept && selectedConcept.name) {
       dispatch("submit", selectedConcept.name);
+    } else {
+      console.warn("No option selected");
+      alert("Select an option");
     }
   };
 </script>
