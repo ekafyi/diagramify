@@ -51,7 +51,7 @@
 <OptionsSelect on:submit={handleSubmit} />
 
 {#if uiState.isLoading}
-  <div>loading...</div>
+  <div class="loading loading-spinner loading-lg" aria-label="loading" />
 {:else if uiState.error}
   <p id="prompter-error" aria-live="polite">
     {uiState.error}
