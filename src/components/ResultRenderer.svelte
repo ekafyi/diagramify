@@ -21,7 +21,12 @@
 
 {#if mermaidStr}
   <div class="collapse collapse-arrow bg-base-200">
-    <input type="radio" name="my-accordion-2" checked="checked" />
+    <input
+      type="radio"
+      name="my-accordion-2"
+      checked={true}
+      data-umami-event="result-diagram-expand"
+    />
     <div class="collapse-title text-xl font-medium">Diagram</div>
     <div class="collapse-content">
       <Mermaid content={mermaidStr} />
