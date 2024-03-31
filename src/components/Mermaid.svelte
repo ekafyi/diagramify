@@ -40,10 +40,8 @@
   $: content && hasMounted && renderDiagram();
 </script>
 
-<div bind:this={containerEl}></div>
+<div bind:this={containerEl} class="flex justify-center"></div>
 
 {#if error}
   <Error title={error} msg="Error rendering diagram. Reload and try again." />
-{:else}
-  <pre><code>{content}</code></pre>
 {/if}

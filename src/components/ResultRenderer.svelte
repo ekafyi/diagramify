@@ -8,23 +8,7 @@
   let mermaidStr = "";
   let markdownStr = "";
 
-  export let response = `
-\`\`\`mermaid
-graph LR
-subgraph YouTube Channel Monetization
-    A[Create a YouTube channel] --> B[Build an audience]
-    B --> C[Enable monetization]
-    C --> D[Meet eligibility requirements]
-    D --> E[Apply for the YouTube Partner Program]
-    E --> F[Get approved]
-    F --> G[Start earning money]
-end
-\`\`\`
-
-- [YouTube Help: Monetization](https://support.google.com/youtube/answer/72851)
-- [YouTube Creator Academy: How to Make Money on YouTube](https://creatoracademy.youtube.com/page/course/make-money-on-youtube)
-- [Google AdSense Help: YouTube Monetization](https://support.google.com/adsense/answer/9317141)
-	`;
+  export let response = "";
 
   const split = getMermaidAndLinks(response);
   if (split?.mermaid) {
@@ -33,11 +17,16 @@ end
   if (split?.markdown) {
     markdownStr = split.markdown;
   }
-  // $: console.log(split);
 </script>
 
 {#if mermaidStr}
-  <Mermaid content={mermaidStr} />
+  <div class="collapse collapse-arrow bg-base-200">
+    <input type="radio" name="my-accordion-2" checked="checked" />
+    <div class="collapse-title text-xl font-medium">Diagram</div>
+    <div class="collapse-content">
+      <Mermaid content={mermaidStr} />
+    </div>
+  </div>
 {:else}
   <Error
     title="Data issue"
@@ -46,8 +35,35 @@ end
 {/if}
 
 {#if markdownStr}
-  <section aria-labelledby="links-heading">
-    <p id="links-heading">Learn more</p>
-    <Markdown md={markdownStr} />
-  </section>
+  <div class="collapse collapse-arrow bg-base-200">
+    <input type="radio" name="my-accordion-2" />
+    <div class="collapse-title text-xl font-medium">Learn more</div>
+    <div
+      class="collapse-content prose prose-sm md:prose-base prose-a:text-primary hover:prose-a:no-underline"
+    >
+      <Markdown md={markdownStr} />
+    </div>
+  </div>
 {/if}
+
+{#if mermaidStr}
+  <div class="collapse collapse-arrow bg-base-200">
+    <input type="radio" name="my-accordion-2" />
+    <div class="collapse-title text-xl font-medium">Code</div>
+    <div class="collapse-content overflow-x-auto">
+      <div class="mockup-code text-xs md:text-sm">
+        <pre><code>{mermaidStr}</code></pre>
+      </div>
+    </div>
+  </div>
+{/if}
+
+<style>
+  .mockup-code pre:before {
+    content: none;
+  }
+  .mockup-code pre {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+</style>

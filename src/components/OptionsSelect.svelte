@@ -73,8 +73,6 @@
   };
 </script>
 
-<h1>Explain with Gemini AI + Mermaid diagram</h1>
-
 <div class="flex flex-wrap gap-2">
   {#each concepts as concept}
     <button
@@ -94,7 +92,7 @@
   <button
     on:click={handleSubmit}
     disabled={!selectedConcept}
-    class="btn btn-primary btn-lg"
+    class="btn btn-primary btn-lg px-10"
   >
     Get diagram
   </button>

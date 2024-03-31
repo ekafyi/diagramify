@@ -52,12 +52,46 @@
   };
 </script>
 
-<OptionsSelect on:submit={handleSubmit} />
+<div class="app-container grid lg:grid-cols-2 gap-10 xl:gap-12">
+  <div class="space-y-6 lg:space-y-8">
+    <h1 class="text-4xl font-bold leading-none py-4 lg:py-0">
+      Explain <em class="text-accent">concepts</em> with&nbsp;<em
+        class="text-primary">diagrams</em
+      >
+    </h1>
+    <OptionsSelect on:submit={handleSubmit} />
+  </div>
+  <div
+    aria-live="polite"
+    aria-busy={uiState.isLoading ? "true" : "false"}
+    class="space-y-2"
+    class:flex={uiState.isLoading}
+  >
+    {#if uiState.isLoading}
+      <div
+        class="loading loading-spinner loading-lg mx-auto"
+        aria-label="loading"
+      />
+    {:else if uiState.error}
+      <Error title={"Server response issue"} msg={uiState.error} />
+    {:else if uiState.response}
+      <ResultRenderer response={uiState.response} />
+    {/if}
+  </div>
+</div>
 
-{#if uiState.isLoading}
-  <div class="loading loading-spinner loading-lg" aria-label="loading" />
-{:else if uiState.error}
-  <Error title={"Server response issue"} msg={uiState.error} />
-{:else if uiState.response}
-  <ResultRenderer response={uiState.response} />
-{/if}
+<style>
+  em {
+    font-style: normal;
+  }
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+    }
+  }
+  @media (min-width: 1280px) {
+    .app-container {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    }
+  }
+</style>
