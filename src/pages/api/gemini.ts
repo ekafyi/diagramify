@@ -10,6 +10,12 @@ const model = genAI.getGenerativeModel({
   generationConfig: {},
   safetySettings: [],
 });
+const generationConfig = {
+  temperature: 0.2,
+  topK: 2,
+  topP: 0.2,
+  maxOutputTokens: 1800,
+};
 
 // ---
 
@@ -20,12 +26,12 @@ const sanitizeInput = (input: string) => {
 const validateInput = (
   input: any
 ): { valid: false; reason: string } | { valid: true; prompt: string } => {
-  const PROMPT_MAX_LENGTH = 200;
+  const PROMPT_MAX_LENGTH = 703; // template 653 chars + concept 50 chars
 
   if (!input?.prompt || input.prompt.length > PROMPT_MAX_LENGTH) {
     return {
       valid: false,
-      reason: `Prompt empty, invalid, or more than ${PROMPT_MAX_LENGTH} chars.`,
+      reason: "Prompt empty, invalid, or exceed character limit.",
     };
   }
   return {
@@ -51,7 +57,14 @@ export const POST: APIRoute = async ({ request }) => {
     "Access-Control-Allow-Origin": "origin",
   });
 
-  const response = (await model.generateContent(validated.prompt)).response;
+  // const response = (await model.generateContent(validated.prompt)).response;
+  const response = (
+    await model.generateContent({
+      contents: [{ role: "user", parts: [{ text: validated.prompt }] }],
+      generationConfig,
+    })
+  ).response;
+
   try {
     const resText = response.text();
     return new Response(JSON.stringify({ response: resText }), { headers });
