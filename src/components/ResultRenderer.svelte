@@ -46,8 +46,27 @@ end
 {/if}
 
 {#if markdownStr}
-  <section aria-labelledby="result-links-heading" class="prose">
+  <section
+    aria-labelledby="result-links-heading"
+    class="prose prose-sm md:prose-base"
+  >
     <h2 id="result-links-heading">Learn more</h2>
     <Markdown md={markdownStr} />
   </section>
 {/if}
+
+{#if mermaidStr}
+  <div class="mockup-code text-xs md:text-sm">
+    <pre><code>{mermaidStr}</code></pre>
+  </div>
+{/if}
+
+<style>
+  .mockup-code pre:before {
+    content: none;
+  }
+  .mockup-code pre {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+</style>
