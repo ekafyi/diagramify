@@ -28,6 +28,7 @@
     "typescript": "^5.4.3"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.12",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/svelte": "^4.1.0",
     "@testing-library/user-event": "^14.5.2",

@@ -46,8 +46,8 @@ end
 {/if}
 
 {#if markdownStr}
-  <section aria-labelledby="links-heading">
-    <p id="links-heading">Learn more</p>
+  <section aria-labelledby="result-links-heading" class="prose">
+    <h2 id="result-links-heading">Learn more</h2>
     <Markdown md={markdownStr} />
   </section>
 {/if}

@@ -92,7 +92,7 @@
   <button
     on:click={handleSubmit}
     disabled={!selectedConcept}
-    class="btn btn-primary btn-lg"
+    class="btn btn-primary btn-lg px-10"
   >
     Get diagram
   </button>
