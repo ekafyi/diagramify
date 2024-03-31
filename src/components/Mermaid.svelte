@@ -2,14 +2,22 @@
   import { onMount } from "svelte";
   import mermaid from "mermaid";
 
+  import Error from "./Error.svelte";
+
   export let content = "";
 
   let containerEl: HTMLElement;
   let hasMounted = false;
+  let error = "";
 
   const renderDiagram = async () => {
-    const { svg } = await mermaid.render("svelte-mermaid", content);
-    containerEl.innerHTML = svg;
+    try {
+      const { svg } = await mermaid.render("svelte-mermaid", content);
+      containerEl.innerHTML = svg;
+    } catch (err) {
+      error = err.name;
+      console.warn(`${err.name} — ${err.message}`);
+    }
   };
 
   onMount(() => {
@@ -34,4 +42,8 @@
 
 <div bind:this={containerEl}></div>
 
-<pre><code>{content}</code></pre>
+{#if error}
+  <Error title={error} msg="Error rendering diagram. Reload and try again." />
+{:else}
+  <pre><code>{content}</code></pre>
+{/if}
