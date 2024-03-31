@@ -26,7 +26,7 @@ const sanitizeInput = (input: string) => {
 const validateInput = (
   input: any
 ): { valid: false; reason: string } | { valid: true; prompt: string } => {
-  const PROMPT_MAX_LENGTH = 703; // template 653 chars + concept 50 chars
+  const PROMPT_MAX_LENGTH = 1000; // arbitrary number for now
 
   if (!input?.prompt || input.prompt.length > PROMPT_MAX_LENGTH) {
     return {
@@ -57,15 +57,15 @@ export const POST: APIRoute = async ({ request }) => {
     "Access-Control-Allow-Origin": "origin",
   });
 
-  // const response = (await model.generateContent(validated.prompt)).response;
-  const response = (
-    await model.generateContent({
-      contents: [{ role: "user", parts: [{ text: validated.prompt }] }],
-      generationConfig,
-    })
-  ).response;
-
+  let response;
   try {
+    response = (
+      await model.generateContent({
+        contents: [{ role: "user", parts: [{ text: validated.prompt }] }],
+        generationConfig,
+      })
+    ).response;
+
     const resText = response.text();
     return new Response(JSON.stringify({ response: resText }), { headers });
   } catch (err) {
