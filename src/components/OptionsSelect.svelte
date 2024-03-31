@@ -73,8 +73,6 @@
   };
 </script>
 
-<h1>Explain with Gemini AI + Mermaid diagram</h1>
-
 <div class="flex flex-wrap gap-2">
   {#each concepts as concept}
     <button
