@@ -1,6 +1,8 @@
 <script lang="ts">
   import Mermaid from "./Mermaid.svelte";
   import Markdown from "svelte-exmarkdown";
+  import Error from "./Error.svelte";
+
   import { getMermaidAndLinks } from "@/utils/str";
 
   let mermaidStr = "";
@@ -36,7 +38,13 @@ end
 
 {#if mermaidStr}
   <Mermaid content={mermaidStr} />
+{:else}
+  <Error
+    title="Data issue"
+    msg="Invalid or empty diagram. Try clicking “Get diagram” again."
+  />
 {/if}
+
 {#if markdownStr}
   <section aria-labelledby="links-heading">
     <p id="links-heading">Learn more</p>
