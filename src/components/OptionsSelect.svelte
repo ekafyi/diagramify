@@ -57,14 +57,15 @@
 
 <h1>Explain with Gemini AI + Mermaid diagram</h1>
 
-<div class="options-container">
+<div class="flex flex-wrap gap-2">
   {#each concepts as concept}
     <button
       on:click={handleClick}
       data-name={concept.name}
       type="button"
-      class="option"
-      class:option--active={selectedConcept?.name === concept.name}
+      class="btn rounded-full"
+      class:btn-outline={selectedConcept?.name !== concept.name}
+      class:btn-accent={selectedConcept?.name === concept.name}
     >
       <span aria-hidden="true">{concept.icon}</span>
       {concept.name}
@@ -75,29 +76,8 @@
   <button
     on:click={handleSubmit}
     disabled={!selectedConcept}
-    class="submit-btn"
+    class="btn btn-primary btn-lg"
   >
-    Explain
+    Get diagram
   </button>
 </div>
-
-<style>
-  .options-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-  .option {
-    list-height: 1;
-    border: 2px solid currentColor;
-    border-radius: 1.25rem;
-    padding: 0.5rem 1rem;
-  }
-  .option--active {
-    background: beige;
-  }
-  .submit-btn {
-    font-size: 1.25em;
-  }
-</style>

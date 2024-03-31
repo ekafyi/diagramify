@@ -18,14 +18,13 @@
       startOnLoad: true,
       theme: "dark",
       themeVariables: {
-        fontFamily:
-          "-apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif",
-        primaryColor: "#BB2528",
-        primaryTextColor: "#fff",
-        primaryBorderColor: "#7C0000",
-        lineColor: "#F8B229",
-        secondaryColor: "#006100",
-        tertiaryColor: "#fff",
+        fontFamily: "inherit",
+        // primaryColor: "#BB2528",
+        // primaryTextColor: "#fff",
+        primaryBorderColor: "#7480ff",
+        lineColor: "#00cdb8",
+        // secondaryColor: "#006100",
+        // tertiaryColor: "#fff",
       },
     });
   });
@@ -36,10 +35,3 @@
 <div bind:this={containerEl}></div>
 
 <pre><code>{content}</code></pre>
-
-<style>
-  pre {
-    background: #f2f2f2;
-    padding: 0.5rem;
-  }
-</style>
