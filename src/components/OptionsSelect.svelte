@@ -69,7 +69,6 @@
     const userInput = window.prompt("Explain about…", "solar eclipse");
 
     if (userInput && userInput.length > MAX_LENGTH) {
-      // @ts-ignore
       window.umami?.track("option-user-input", {
         name: userInput,
         status: "INVALID_INPUT",
@@ -83,7 +82,6 @@
       };
       concepts.push(customConcept);
       selectedConcept = customConcept;
-      // @ts-ignore
       window.umami?.track("option-user-input", {
         name: userInput,
         status: "VALID",

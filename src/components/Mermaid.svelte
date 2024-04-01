@@ -16,9 +16,16 @@
       containerEl.innerHTML = svg;
       window.umami?.track("result-mermaid-load");
     } catch (err) {
-      error = err.name;
-      console.warn(`${err.name} — ${err.message}`);
-      window.umami?.track("result-mermaid-error");
+      if (err instanceof Error) {
+        error = err.name;
+        console.warn(`${err.name} — ${err.message}`);
+      }
+      window.umami?.track("result-mermaid-error", {
+        message:
+          err instanceof Error
+            ? `${err.name} — ${err.message}`
+            : JSON.stringify(err),
+      });
     }
   };
 
