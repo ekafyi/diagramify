@@ -5,6 +5,7 @@
 
   const dispatch = createEventDispatcher();
   let selectedConcept: ArrayType<typeof concepts> | null = null;
+  let customConcept: (typeof concepts)[0];
 
   const concepts = [
     {
@@ -17,27 +18,27 @@
     },
     {
       name: "human metabolism",
-      icon: "🤹",
+      icon: "💓",
     },
     {
       name: "dropshipping business",
       icon: "👕",
     },
     {
-      name: "applying for mortgage loan",
-      icon: "🏦",
-    },
-    {
-      name: "making instant noodles",
-      icon: "🍜",
-    },
-    {
       name: "YouTube channel monetization",
       icon: "🤳",
     },
     {
+      name: "applying for mortgage loan",
+      icon: "🏦",
+    },
+    {
       name: "building and distributing an Electron app",
       icon: "⚛️",
+    },
+    {
+      name: "making instant noodles",
+      icon: "🍜",
     },
     // // (Leave to check error UI)
     // {
@@ -63,6 +64,34 @@
     }
   };
 
+  const handleCustomInput = () => {
+    const MAX_LENGTH = 40;
+    const userInput = window.prompt("Explain about…", "solar eclipse");
+
+    if (userInput && userInput.length > MAX_LENGTH) {
+      // @ts-ignore
+      window.umami?.track("option-user-input", {
+        name: userInput,
+        status: "INVALID_INPUT",
+      });
+      return alert(`Keep it ${MAX_LENGTH} characters or shorter.`);
+    }
+    if (userInput) {
+      customConcept = {
+        name: userInput,
+        icon: "💬",
+      };
+      concepts.push(customConcept);
+      selectedConcept = customConcept;
+      // @ts-ignore
+      window.umami?.track("option-user-input", {
+        name: userInput,
+        status: "VALID",
+      });
+      return;
+    }
+  };
+
   const handleSubmit = () => {
     if (selectedConcept && selectedConcept.name) {
       dispatch("submit", selectedConcept.name);
@@ -73,7 +102,7 @@
   };
 </script>
 
-<div class="flex flex-wrap gap-2">
+<div class="flex flex-wrap gap-2" aria-label="select a concept">
   {#each concepts as concept}
     <button
       on:click={handleClick}
@@ -89,6 +118,15 @@
       {concept.name}
     </button>
   {/each}
+  {#if !customConcept}
+    <button
+      on:click={handleCustomInput}
+      data-umami-event="custom-option-button"
+      class="btn rounded-full px-4"
+    >
+      Add your own
+    </button>
+  {/if}
 </div>
 <div>
   <button
