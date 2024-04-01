@@ -1,10 +1,21 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import App from "@/components/App.svelte";
+
+import { Content as CreditsDisclaimerText } from "../components/CreditsDisclaimerText.md";
+
+const spacingXStyle = "p-4 lg:px-8 xl:p-12 lg:max-w-screen-2xl lg:mx-auto";
 ---
 
 <Layout>
-  <main class="p-4 lg:py-12 lg:px-8 xl:p-12 lg:max-w-screen-2xl lg:mx-auto">
+  <main class={`${spacingXStyle} lg:py-12`}>
     <App client:visible />
   </main>
+  <div class={`${spacingXStyle} flex justify-center lg:justify-end`}>
+    <footer
+      class="prose prose-sm prose-a:text-secondary/90 max-w-lg text-center lg:text-right mb-4"
+    >
+      <CreditsDisclaimerText />
+    </footer>
+  </div>
 </Layout>
