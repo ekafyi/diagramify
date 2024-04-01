@@ -4,18 +4,28 @@ import App from "@/components/App.svelte";
 
 import { Content as CreditsDisclaimerText } from "../components/CreditsDisclaimerText.md";
 
-const spacingXStyle = "p-4 lg:px-8 xl:p-12 lg:max-w-screen-2xl lg:mx-auto";
+const spacingXStyle = "p-4 lg:px-8 xl:px-12 lg:max-w-screen-2xl lg:mx-auto";
 ---
 
 <Layout>
   <main class={`${spacingXStyle} lg:py-12`}>
     <App client:visible />
   </main>
-  <div class={`${spacingXStyle} flex justify-center lg:justify-end`}>
+  <div
+    class={`${spacingXStyle} lg:pt-0 lg:pb-8 flex justify-center lg:justify-end`}
+  >
     <footer
-      class="prose prose-sm prose-a:text-secondary/90 max-w-lg text-center lg:text-right mb-4"
+      class="prose prose-sm prose-a:text-secondary/90 max-w-lg text-center lg:text-right"
     >
       <CreditsDisclaimerText />
     </footer>
   </div>
 </Layout>
+
+<style>
+  main {
+    --footer-h: 8rem;
+    min-height: calc(100vh - var(--footer-h));
+    min-height: calc(100dvh - var(--footer-h));
+  }
+</style>
