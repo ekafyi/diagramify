@@ -94,7 +94,8 @@
   <button
     on:click={handleSubmit}
     disabled={!selectedConcept}
-    data-umami-event="submit-button"
+    data-umami-event={selectedConcept ? "submit-button" : undefined}
+    data-umami-event-selected-name={selectedConcept?.name || undefined}
     class="btn btn-primary btn-lg px-10"
   >
     Get diagram
