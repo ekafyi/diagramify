@@ -3,6 +3,7 @@
   class="btn btn-square btn-sm bg-transparent border-none absolute top-2 right-6 z-10"
   aria-label="copy"
   title="copy"
+  data-umami-event="copy-button"
 >
   <svg class="" viewBox="0 0 16 16" width="16" height="16" fill="currentColor"
     ><path
