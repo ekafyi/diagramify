@@ -16,7 +16,7 @@
       isLoading: true,
     };
 
-    const prompt = `You are an educator. Explain this concept as a Mermaid diagram: ${concept}. Choose from the most appropriate Mermaid syntaxes: flowchart, sequenceDiagram, classDiagram, stateDiagram, erDiagram, journey, gantt, pie, gitGraph. Use the latest version and refer to the docs (https://mermaid.js.org/intro).\n\nIf using sequenceDiagram, write the arrow as "->>" instead of "->".\n\nIf you don't understand or cannot explain the concept in a diagram, respond with NO_DIAGRAM. Else, ﻿under the Mermaid code, include 1-3 links to further explanation or resources related to the concept. Use a bullet list format with no heading text. The links must have a title and must come from official or trustworthy source. Omit links about Mermaid or diagrams.`;
+    const prompt = `You are an educator. Explain this concept as a Mermaid diagram: ${concept}. Include key details. Choose from the most appropriate Mermaid syntaxes: flowchart, sequenceDiagram, classDiagram, stateDiagram, erDiagram, journey, gantt, pie, gitGraph. Use the latest version and refer to the docs (https://mermaid.js.org/intro).\n\nIf using sequenceDiagram, write the arrow as "->>" instead of "->".\n\nIf you don't understand or cannot explain the concept in a diagram, respond with NO_DIAGRAM. Else, ﻿under the Mermaid code, include 1-3 links to further explanation or resources related to the concept. Use a bullet list format with no heading text. The links must have a title and must come from official or trustworthy source. Omit links about Mermaid or diagrams. Make sure the links are active and accessible.`;
 
     try {
       const apiRes = await fetch("/api/gemini", {
